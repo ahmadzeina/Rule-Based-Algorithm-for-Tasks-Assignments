@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — see design.md (Linear-style dark theme)
+------------------------------------------------------------------ */
+:root {
+  --background-main: #0f1115;
+  --background-sidebar: #17181c;
+  --background-panel: #222429;
+  --text-primary: #e2e2e2;
+  --text-secondary: #85868b;
+  --text-placeholder: #5f6368;
+  --border-subtle: #2d3139;
+  --accent-scope: #5e6ad2;
+  --accent-started: #f2c94c;
+  --accent-completed: #4caf50;
+  --accent-alert: #e57373;
+  --background: var(--background-main);
+  --foreground: var(--text-primary);
+}
+
+html {
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: rgba(94, 106, 210, 0.35);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-scope);
+  outline-offset: 2px;
+}
+
+/* Typography hierarchy (design.md §3) */
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+h2,
+h3,
+h4 {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+p,
+li,
+span,
+div {
+  font-size: 13px;
+}
+
+p,
+li {
+  color: var(--text-primary);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f49;
+}
+
+/* Buttons — quiet, bordered, Linear-style */
+.btn {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, opacity 0.15s ease;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.btn-sm { padding: 5px 10px; }
+.btn-md { padding: 7px 14px; }
+.btn-lg { padding: 9px 18px; }
+
+.btn-primary {
+  background: var(--accent-scope);
+  color: #ffffff;
+}
+.btn-primary:hover:not(:disabled) { background: #4c55a9; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+.btn-secondary:hover:not(:disabled) { background: rgba(255, 255, 255, 0.04); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--accent-alert);
+  border-color: rgba(229, 115, 115, 0.35);
+}
+.btn-danger:hover:not(:disabled) { background: rgba(229, 115, 115, 0.12); }
+
+/* Inputs — panel background per design.md §2 */
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--background-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: border-color 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-scope);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+  cursor: pointer;
+}
+
+/* Cards / panels — subtle surfaces separated by borders (no shadows) */
+.card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+
+/* Dashed CTA (design.md §5B) */
+.dashed-cta {
+  width: 100%;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 8px;
+  background: transparent;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  font-family: inherit;
+}
+
+.dashed-cta:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+}
+
+/* Chart placeholder while charts mount client-side */
+.chart-skeleton {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+/* PageShell: main column + right analytics panel (design.md §4) */
+.ps-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+}
+
+.ps-main {
+  min-width: 0;
+  max-width: 760px;
+}
+
+.ps-aside {
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .ps-shell {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 0;
+  }
+  .ps-main {
+    padding-right: 32px;
+  }
+  .ps-aside {
+    border-left: 1px solid var(--border-subtle);
+    padding-left: 24px;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .ps-aside {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 24px;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
