@@ -22,7 +22,7 @@ app = FastAPI(title="Task Assigner API", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://127.0.0.1:3000" ,
-                    "https://rule-based-algorithm-for-tasks-assi.vercel.app/"],
+                    "https://rule-based-algorithm-for-tasks-assi.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
