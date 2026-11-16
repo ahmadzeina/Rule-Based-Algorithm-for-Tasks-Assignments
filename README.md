@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
 
 # ⚡ TaskAssigner
@@ -11,7 +10,7 @@
 [![Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 [![Railway](https://img.shields.io/badge/Engine%20API-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app/)
 
-[Live Demo](#) · [Report Bug](https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments/issues) · [Request Feature](https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments/issues)
+[Live Demo](https://your-app.vercel.app) · [Report Bug](https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments/issues) · [Request Feature](https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments/issues)
 
 </div>
 
@@ -19,7 +18,7 @@
 
 ## 📖 Overview
 
-**TaskAssigner** is a full-stack task management and automated resource-allocation platform designed to eliminate manual bottlenecks and subjective bias in team task distribution. 
+**TaskAssigner** is a full-stack task management and automated resource-allocation platform designed to eliminate manual bottlenecks and subjective bias in team task distribution.
 
 Instead of relying on ad-hoc assignments or opaque black-box heuristics, TaskAssigner evaluates incoming tasks against team member profiles, active workloads, skill tags, and priority constraints through a dedicated **Rule-Based Allocation Engine**—producing transparent, deterministic, and auditable assignments.
 
@@ -51,7 +50,6 @@ TaskAssigner is built as a decoupled, multi-service production architecture sepa
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐
 │                                 Supabase (Auth & PostgreSQL)                             │
 └──────────────────────────────────────────────────────────────────────────────────────────┘
-
 ```
 
 ### Tech Stack
@@ -72,11 +70,9 @@ When a task is submitted for automated assignment, the engine executes a multi-s
 
 1. **Eligibility Filtering (Hard Constraints):** Filters out team members who lack required skills, are marked unavailable, or have reached their maximum active workload capacity.
 2. **Weighted Rule Scoring (Soft Constraints):** Evaluates eligible candidates using weighted criteria:
-* **Skill Match Score:** Alignment between task requirements and member expertise.
-* **Load Balancing Factor:** Favors members with lower current utilization ratios to maintain equitable workload distribution.
-* **Priority & Deadline Urgency:** Adjusts weights for high-priority or time-sensitive tasks.
-
-
+   - **Skill Match Score:** Alignment between task requirements and member expertise.
+   - **Load Balancing Factor:** Favors members with lower current utilization ratios to maintain equitable workload distribution.
+   - **Priority & Deadline Urgency:** Adjusts weights for high-priority or time-sensitive tasks.
 3. **Deterministic Selection & Audit Trail:** Selects the highest-scoring candidate and logs the assignment rationale so workspace leads can verify *why* a specific member was chosen.
 
 ---
@@ -85,92 +81,91 @@ When a task is submitted for automated assignment, the engine executes a multi-s
 
 ### Prerequisites
 
-* **Node.js** `>= 18.x`
-* **Python** `>= 3.10`
-* A **Supabase** project (URL & Anon Key)
+- **Node.js** `>= 18.x`
+- **Python** `>= 3.10`
+- A **Supabase** project (URL & Anon Key)
 
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments.git](https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments.git)
+git clone https://github.com/ahmadzeina/Rule-Based-Algorithm-for-Tasks-Assignments.git
 cd Rule-Based-Algorithm-for-Tasks-Assignments
-
 ```
 
 ### 2. Backend Setup (Engine API)
 
 ```bash
-cd backend # adjust path if backend is in root/server
+cd backend  # adjust path if backend is in root/server
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
 ```
 
 Create a `.env` file in your backend directory:
 
 ```env
 DATABASE_URL=your_supabase_postgres_connection_string
-SUPABASE_URL=[https://your-project-id.supabase.co](https://your-project-id.supabase.co)
+SUPABASE_URL=https://your-project-id.supabase.co
 SUPABASE_KEY=your_supabase_service_or_anon_key
 ALLOWED_ORIGINS=http://localhost:3000
-
 ```
 
 Run the backend server:
 
 ```bash
 uvicorn main:app --reload --port 8000
-
 ```
 
 ### 3. Frontend Setup (Next.js)
 
 ```bash
-cd frontend # adjust path if frontend is in root
+cd frontend  # adjust path if frontend is in root
 npm install
-
 ```
 
 Create a `.env.local` file in your frontend directory:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=[https://your-project-id.supabase.co](https://your-project-id.supabase.co)
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_API_URL=[http://127.0.0.1:8000](http://127.0.0.1:8000)
-
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 ```
 
 Run the development server:
 
 ```bash
 npm run dev
-
 ```
 
-Open `http://localhost:3000` in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
 ## 🌍 Production Deployment
 
-* **Frontend (Vercel):** Connected directly to the `main` branch with environment variables configured for production Supabase credentials and the Railway Engine API URL.
-* **Backend (Railway):** Deployed as an independent Python service exposing the `/docs` OpenAPI specification and health-check endpoints monitored directly from the dashboard status indicator.
+- **Frontend (Vercel):** Connected directly to the `main` branch with environment variables configured for production Supabase credentials and the Railway Engine API URL.
+- **Backend (Railway):** Deployed as an independent Python service exposing the `/docs` OpenAPI specification and health-check endpoints monitored directly from the dashboard status indicator.
 
 ---
 
 ## 📸 Screenshots
 
+| Sign-In & Auth | Workspace Dashboard |
+| --- | --- |
+| ![Sign-In](docs/login.png) | ![Dashboard](docs/dashboard.png) |
 
+| Tasks & Assignments |
+| --- |
+| ![Tasks](docs/tasks.png) |
 
 ---
 
 ## 🗺️ Roadmap
 
-* [ ] Custom weight sliders for workspace admins to tune rule priorities via the UI
-* [ ] Webhook / email notifications upon task assignment
-* [ ] Role-Based Access Control (Admin vs. Team Member views)
-* [ ] Exportable CSV/PDF allocation audit reports
+- [ ] Custom weight sliders for workspace admins to tune rule priorities via the UI
+- [ ] Webhook / email notifications upon task assignment
+- [ ] Role-Based Access Control (Admin vs. Team Member views)
+- [ ] Exportable CSV/PDF allocation audit reports
 
 ---
 
@@ -178,21 +173,10 @@ Open `http://localhost:3000` in your browser.
 
 **Ahmad Zeina**
 
-* GitHub: [@ahmadzeina](https://www.google.com/search?q=https://github.com/ahmadzeina)
+- GitHub: [@ahmadzeina](https://github.com/ahmadzeina)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-
-```
-
----
-
-### Quick Checklist Before You Commit It
-1. **Replace the `[Live Demo](#)` link** at the top with your actual Vercel production URL so recruiters can click straight into your deployed app.
-2. **Verify folder names in "Getting Started":** Adjust `cd backend` / `cd frontend` (and `uvicorn main:app`) to match the exact folder and entry-file names in your repository.
-3. **Add a `docs/` folder with 2–3 screenshots** (your new Sign-In screen, the Overview/Dashboard, and the Tasks & Assignments table)—repositories with visual previews get significantly higher engagement from technical reviewers.
-
-```
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
