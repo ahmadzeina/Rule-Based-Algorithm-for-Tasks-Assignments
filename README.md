@@ -150,13 +150,31 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📸 Screenshots
 
-| Sign-In & Auth | Workspace Dashboard |
-| --- | --- |
-| ![Sign-In](docs/login.png) | ![Dashboard](docs/dashboard.png) |
+| Dashboard |
+| --- |
+| ![Dashboard](docs/Dashboard.png) |
+
+| Analytics |
+| --- |
+| ![Analytics](docs/Analytics.png) |
 
 | Tasks & Assignments |
 | --- |
-| ![Tasks](docs/tasks.png) |
+| ![Tasks](docs/Tasks.png) |
+
+| Team Workspace|
+| --- |
+| ![Team](docs/Team.png) |
+
+| Engine Results |
+| --- |
+| ![Results](docs/Results.png) |
+
+| Workload Summary |
+| --- |
+| ![Workload](docs/Workload.png) |
+
+
 
 ---
 
